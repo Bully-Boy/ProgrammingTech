@@ -12,41 +12,7 @@ Keeper::Keeper()
 Keeper::~Keeper()
 {
 	clear();
-	/*cout << "111" << endl;*/
 }
-
-//Keeper::Keeper(const Keeper& other)
-//{
-//	this->Size = other.Size;
-//
-//	Node* current = nullptr;
-//	Node* current1 = nullptr;
-//	this->head = current;
-//
-//
-//	for (int cnt = 0; cnt < this->Size; cnt++)
-//	{
-//		if (head == nullptr)
-//		{
-//			this->head = new Node(other.head->data);
-//			this->tail = this->head;
-//		}
-//		else
-//		{
-//			current = other.head;
-//			current1 = this->head;
-//
-//			while (current1->pNext != nullptr)
-//			{
-//				current = current->pNext;
-//				current1 = current1->pNext;
-//			}
-//			current1->pNext = new Node(current->pNext->data, current1->pNext, current1);
-//			this->tail = current1->pNext;
-//		}
-//	}
-//}
-
 
 void Keeper::pop_front() // удалить head
 {
@@ -68,7 +34,7 @@ void Keeper::pop_back() // удалить tail
 	Size--;
 }
 
-void Keeper::push_back(Factory data) // добавить назад
+void Keeper::push_back(Factory &data) // добавить назад
 {
 	if (head == nullptr)
 	{
@@ -89,7 +55,7 @@ void Keeper::push_back(Factory data) // добавить назад
 	Size++;
 }
 
-void Keeper::push_front(Factory data)  // добавить вперед
+void Keeper::push_front(Factory &data)  // добавить вперед
 {
 	if (head == nullptr)
 	{

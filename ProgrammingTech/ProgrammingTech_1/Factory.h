@@ -1,20 +1,38 @@
+#pragma once
 #include <iostream>
 #include <string>
+#include <vector>
+#include "Worker.h"
+#include "Furniture.h"
+#include "Equipment.h"
 
 using namespace std;
 
 class Factory 
 {
-protected:
-	string breed;
-	string color;
+private:
+	vector<Worker> worker;
+	vector<Furniture> furniture;
+	vector<Equipment> equipment;
+
 public:
 	Factory();
-	Factory(string breed, string color);
-	~Factory(); 
+	virtual ~Factory(); 
 
-	void set();
-	string get();
+    void LoadData();
+    void SaveData(std::string flag);
+    void ShowAll();
 
-	friend std::ostream& operator<<(std::ostream& out, const Factory& fac);
+    void AddStudent();
+    void RemoveStudent();
+    void ShowWorker();
+
+    void AddTeacher();
+    void RemoveTeacher();
+    void ShowFurniture();
+
+    void AddStaff();
+    void RemoveStaff();
+    void ShowEquipment();
+
 };

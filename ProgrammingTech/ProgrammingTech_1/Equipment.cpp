@@ -1,20 +1,27 @@
 #include "Equipment.h"
 
-Equipment::Equipment() {
-	cout << "Был вызван конструктор без параметров объекта класса Equipment." << endl;
+Equipment::Equipment(string brand, string model, string gos_number) :
+	m_brand(brand), m_model(model), m_gos_number(gos_number)
+{
+
+	cout << "Был вызван конструктор  класса Equipment." << endl;
 }
 
-Equipment::Equipment(string breed, string color, string feedType) {
-	cout << "Был вызван конструктор с параметрами объекта класса Equipment." << endl;
-}
 
-Equipment::~Equipment() {
+
+Equipment::~Equipment() 
+{
 	cout << "Был вызван деструктор объекта класса Equipment." << endl;
 }
-
-void Equipment::set() {
+std::ostream& operator<<(std::ostream& out, const Factory& fac)
+{
+	std::cout << "hhh" << std::endl;
+}
+void Equipment::set() 
+{
 	
 }
-string Equipment::get() {
+string Equipment::get() 
+{
 
 }

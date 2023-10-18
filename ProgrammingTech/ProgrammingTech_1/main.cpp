@@ -21,9 +21,7 @@ void menu()
 	int choice = 0;
 	int k = 0;
 	
-	Keeper a(3);
 	men();
-	a.Show();
 	while (choice != 6)
 	{
 		cin >> choice;

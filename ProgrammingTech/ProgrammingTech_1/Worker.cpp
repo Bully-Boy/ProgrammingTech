@@ -1,22 +1,27 @@
 #include "Worker.h"
 
-Worker::Worker() 
+Worker::Worker(string name, string post, int vages, string address, string phone_number):
+	m_name(name), m_post(post), m_vages(vages), m_address(address), m_phone_number(phone_number)
 {
-	cout << "Был вызван конструктор без параметров объекта класса Worker." << endl;
+	cout << "Был вызван конструктор  класса Worker." << endl;
 }
 
-Worker::Worker() 
+
+
+Worker::~Worker() 
 {
-
-	cout << "Был вызван конструктор с параметрами объекта класса Worker." << endl;
-}
-
-Worker::~Worker() {
 	cout << "Был вызван деструктор объекта класса Worker." << endl;
 }
 
-void Worker::set() {
+std::ostream& operator<<(std::ostream& out, const Factory& fac)
+{
+	std::cout << "hhh" << std::endl;
 }
 
-string Worker::get() {
+void Worker::set() 
+{
+}
+
+string Worker::get() 
+{
 }
