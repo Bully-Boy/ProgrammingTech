@@ -1,0 +1,30 @@
+Worker:
+Name Roman
+Post lider
+Vages 1000000
+Addres Tut
+Phone number 8888888888
+Worker:
+Name IIIII
+Post uborhik
+Vages 100000
+Addres Tam
+Phone number 99999999999
+Worker:
+Name asdfas
+Post 1asdfasd
+Vages 1
+Addres 1a
+Phone number 1c
+Equipment
+Brand Gucci
+Model 10S
+Gos number 10934
+Furniture 
+Type Stanok
+Height 100
+Weidht 200
+Depth 345
+Color brawn
+Material metal
+Cost 1111

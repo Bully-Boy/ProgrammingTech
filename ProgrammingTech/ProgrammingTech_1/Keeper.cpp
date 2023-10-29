@@ -1,111 +1,253 @@
 #include "Keeper.h"
-#include"Factory.h"
-#include<iostream>
+#include "Factory.h"
+#include <iostream>
+#include <fstream>
 
 Keeper::Keeper()
 {
-	Size = 0;
-	head = nullptr;
-	tail = nullptr;
+	std::cout << "the class constructor was called Keepeer" << std::endl;
+	menu();
 }
 
-Keeper::~Keeper()
+Keeper::~Keeper() { std::cout << "the class destructor was called" << std::endl; }
+
+void Keeper::menu()
 {
-	clear();
-}
+	std::cout << "Menu\n"
+		<< "1) All\n"
+		<< "2) Worker\n"
+		<< "3) Equipment\n"
+		<< "4) Furniture\n"
+		<< "5) Exit\n"
+		<< std::endl;
+	int choose;
+	std::cin >> choose;
 
-void Keeper::pop_front() // удалить head
-{
-	Node* temp = head;
-	head = head->pNext;
-
-	delete temp;
-
-	Size--;
-}
-
-void Keeper::pop_back() // удалить tail
-{
-	Node* temp = tail;
-	tail = tail->pPrev;
-	tail->pNext = nullptr;
-	delete temp;
-
-	Size--;
-}
-
-void Keeper::push_back(Factory &data) // добавить назад
-{
-	if (head == nullptr)
+	switch (choose)
 	{
-		head = new Node(data);
-		tail = this->head;
+	case 1: {AllMenu();			break;}
+	case 2:	{WorkerMenu();		break;}
+	case 3:	{EquipmentMenu();	break;}
+	case 4:	{FurnitureMenu();	break;}
+	default:
+		exit(0);
 	}
-	else
-	{
-		Node* current = this->head;
+}
 
-		while (current->pNext != nullptr)
-		{
-			current = current->pNext;
+////////////////////////// All
+
+void Keeper::AllMenu()
+{
+	std::cout << "1) Load Data \n"
+		<< "2) Save Data\n"
+		<< "3) Show All \n"
+		<< "4) Menu\n"
+		<< "5) Exit\n"
+		<< std::endl;
+
+	int choose;
+	std::cin >> choose;
+	switch (choose)
+	{
+	case 1:{LoadData();		break;}
+	case 2:{SaveData();		break;}
+	case 3:{ShowAll();		break;}
+	default:
+		exit(0);
+	}
+	menu();
+}
+void Keeper::LoadData()
+{
+	int factory_code;
+	std::string input_string;
+	std::ifstream file;
+	std::string file_name = "factory.txt";
+	try {
+		file.open(file_name);
+		if (!file) {
+			throw std::runtime_error("Error while opening file " + file_name + " to save data.");
 		}
-		current->pNext = new Node(data, current->pNext, current);
-		tail = current->pNext;
 	}
-	Size++;
-}
-
-void Keeper::push_front(Factory &data)  // добавить вперед
-{
-	if (head == nullptr)
+	catch (const std::exception& e) 
 	{
-		head = new Node(data);
-		tail = this->head;
+		std::cout << "\033[91m" << e.what() << "\033[0m";
+		return;
 	}
-	else
+	while (!file.eof())
 	{
-		Node* current = this->head;
-
-		current->pPrev = new Node(data, current, current->pPrev);
-		head = current->pPrev;
-	}
-	Size++;
-}
-
-void Keeper::clear() // очистка
-{
-	while (Size)
-	{
-		pop_front();
-	}
-}
-
-
-int Keeper::GetSize() //
-{
-	return Size;
-}
-
-
-void Keeper::Show() //
-{
-	Node* current = this->head;
-	if (current != nullptr)
-	{
-		while (current->pNext != nullptr)
+		getline(file, input_string);
+		factory_code = std::stoi(input_string);
+		if (factory_code == 1) 
 		{
-			cout << current->data << " ";
-			current = current->pNext;
+			getline(file, input_string);
+			std::string name = input_string;
+			getline(file, input_string);
+			std::string post = input_string;
+			getline(file, input_string);
+			int vages = std::stoi(input_string);
+			getline(file, input_string);
+			std::string address = input_string;
+			getline(file, input_string);
+			std::string phone_number = input_string;
+
+			m_worker.push_back(Worker(name, post, vages, address, phone_number));
 		}
-		cout << current->data << " " << endl;
+		else if (factory_code == 3) 
+		{
+			getline(file, input_string);
+			std::string type = input_string;
+			getline(file, input_string);
+			int height = std::stoi(input_string);;
+			getline(file, input_string);
+			int weidht = std::stoi(input_string);;
+			getline(file, input_string);
+			int depth = std::stoi(input_string);;
+			getline(file, input_string);
+			std::string color = input_string;
+			getline(file, input_string);
+			std::string material = input_string;
+			getline(file, input_string);
+			int cost = std::stoi(input_string);;
+
+			m_furniture.push_back(Furniture(type, height, weidht, depth, color, material, cost));
+		}
+		else if (factory_code == 2) 
+		{
+			getline(file, input_string);
+			std::string brand = input_string;
+			getline(file, input_string);
+			std::string model = input_string;
+			getline(file, input_string);
+			std::string gos_number = input_string;
+
+			m_equipment.push_back(Equipment(brand, model, gos_number));
+
+		}
 	}
-	else
-		cout << "The list is empty!!!" << endl;
 }
 
-Node::Node(Factory data, Node* pNext, Node* pPrev) //
+void Keeper::SaveData()
 {
-	this->data = data;
-	this->pNext = pNext;
-	this->pPrev = pPrev;
+	std::ofstream file;
+	std::string file_name = "factory1.txt";
+	try {
+		file.open(file_name);
+		if (!file) {
+			throw std::runtime_error("Error while opening file " + file_name + " to save data.");
+		}
+	}
+	catch (const std::exception& e) {
+		std::cout << "\033[91m" << e.what() << "\033[0m";
+		return;
+	}
+	for (auto& worker : m_worker)
+		worker.save(file_name);
+
+	for (auto& equipment : m_equipment)
+		equipment.save(file_name);
+
+	for (auto& furniture : m_furniture)
+		furniture.save(file_name);
+	
+	
+	file.close();
+
+}
+
+void Keeper::ShowAll()
+{
+	std::cout << "Worker" << std::endl;
+	ShowWorker();
+
+	std::cout << "Equipment" << std::endl;
+	ShowEquipment();
+
+	std::cout << "Furniture" << std::endl;
+	ShowFurniture();
+}
+
+////////////////////////// Worker
+void Keeper::WorkerMenu()
+{
+	std::cout << "1) Add\n"
+		<< "2) Remove\n"
+		<< "3) Show\n"
+		<< "4) All menu\n"
+		<< std::endl;
+	int choose;
+	std::cin >> choose;
+	switch (choose)
+	{
+	case 1:{m_worker.push_back(Worker());	break;}
+	case 2:{m_worker.pop_back();			break;}
+	case 3:{this->ShowWorker();				break;}
+	default:
+		menu();
+		break;
+	}
+	this->WorkerMenu();
+}
+
+void Keeper::ShowWorker()
+{
+	for (auto& worker : this->m_worker)
+		std::cout << worker;
+}
+
+////////////////////////// Furniture
+void Keeper::FurnitureMenu()
+{
+	std::cout << "1) Add\n"
+		<< "2) Remove\n"
+		<< "3) Show\n"
+		<< "4) All menu\n"
+		<< std::endl;
+	int choose;
+	std::cin >> choose;
+	switch (choose)
+	{
+	case 1: {m_furniture.push_back(Furniture());	break;}
+	case 2: {m_furniture.pop_back();				break;}
+	case 3: {this->ShowFurniture();					break;}
+	default:
+		menu();
+		break;
+	}
+	this->FurnitureMenu();
+}
+
+
+void Keeper::ShowFurniture()
+{
+	for (auto& furniture : this->m_furniture)
+		std::cout << furniture;
+}
+
+////////////////////////// Equipment
+void Keeper::EquipmentMenu()
+{
+	std::cout << "1) Add\n"
+		<< "2) Remove\n"
+		<< "3) Show\n"
+		<< "4) All menu\n"
+		<< std::endl;
+	int choose;
+	std::cin >> choose;
+	switch (choose)
+	{
+	case 1: {m_equipment.push_back(Equipment());	break;}
+	case 2: {m_equipment.pop_back();				break;}
+	case 3: {this->ShowEquipment();					break;}
+	default:
+		menu();
+		break;
+	}
+	this->EquipmentMenu();
+}
+
+void Keeper::ShowEquipment()
+{
+	for (auto& equipment : this->m_equipment)
+		std::cout << equipment;
 }

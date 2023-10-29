@@ -1,22 +1,14 @@
 #include"Factory.h";
+#include <fstream>
 
-Factory::Factory() 
+Factory::Factory()
 {
-	cout << "Был вызван конструктор объекта класса Factory." << endl;
+	std::cout << "the class constructor was called Factory." << std::endl;
 }
 
 
-Factory::~Factory() 
+Factory::~Factory()
 {
-	cout << "Был вызван деструктор объекта класса Factory." << endl;
-} 
-
-void print()
-{
-	std::cout << *this;
-}
-std::ostream& operator<<(std::ostream& out, const Factory& fac)
-{
-
+	std::cout << "the class destructor was called Factory." << std::endl;
 }
 

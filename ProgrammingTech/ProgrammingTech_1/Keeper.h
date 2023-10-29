@@ -1,38 +1,38 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <vector>
 #include "Factory.h"
-using namespace std;
-
-
-class Node
-{
-public:
-	Node* pNext;
-	Node* pPrev;
-	Node* Link;
-	Factory data;
-	Node(Factory data = Factory(), Node* pNext = nullptr, Node* pPrev = nullptr);
-};
+#include "Worker.h"
+#include "Equipment.h"
+#include "Furniture.h"
+#include <fstream>
 
 class Keeper
 {
 private:
-	int Size;
-	Node* head;
-	Node* tail;
+    std::vector<Worker> m_worker;
+    std::vector<Furniture> m_furniture;
+    std::vector<Equipment> m_equipment;
 
 public:
-	Keeper();
-	~Keeper();
 
-	void pop_front();
-	void pop_back();
-	void push_back(Factory &data);
-	void push_front(Factory &data);
-	void clear();
+    Keeper();
+    ~Keeper();
 
-	int GetSize();
-	void Show();
+    void menu();
 
+    void AllMenu();
+    void LoadData();
+    void SaveData();
+    void ShowAll();
+
+    void WorkerMenu();
+    void ShowWorker();
+
+    void FurnitureMenu();
+    void ShowFurniture();
+
+    void EquipmentMenu();
+    void ShowEquipment();
 };

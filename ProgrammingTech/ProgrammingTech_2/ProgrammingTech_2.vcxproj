@@ -126,19 +126,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\..\1\learner.cpp" />
-    <ClCompile Include="..\..\..\..\1\staff.cpp" />
-    <ClCompile Include="..\..\..\..\1\teacher.cpp" />
-    <ClCompile Include="..\..\..\..\1\university.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\..\1\learner.h" />
-    <ClInclude Include="..\..\..\..\1\staff.h" />
-    <ClInclude Include="..\..\..\..\1\teacher.h" />
-    <ClInclude Include="..\..\..\..\1\unit.h" />
-    <ClInclude Include="..\..\..\..\1\university.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
