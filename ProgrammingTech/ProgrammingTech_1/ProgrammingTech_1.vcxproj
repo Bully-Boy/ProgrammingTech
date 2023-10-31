@@ -21,17 +21,20 @@
   <ItemGroup>
     <ClCompile Include="Factory.cpp" />
     <ClCompile Include="Furniture.cpp" />
-    <ClCompile Include="Worker.cpp" />
-    <ClCompile Include="Equipment.cpp" />
     <ClCompile Include="Keeper.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Worker.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Equipment.h" />
     <ClInclude Include="Factory.h" />
     <ClInclude Include="Furniture.h" />
-    <ClInclude Include="Worker.h" />
-    <ClInclude Include="Equipment.h" />
     <ClInclude Include="Keeper.h" />
+    <ClInclude Include="Worker.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="factory.txt" />
+    <Text Include="factory1.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
