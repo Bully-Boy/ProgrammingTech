@@ -8,7 +8,7 @@ class Factory
 public:
 
 	Factory();
-	~Factory();
+	virtual ~Factory();
 
 	virtual void save(std::string path) = 0;
 
