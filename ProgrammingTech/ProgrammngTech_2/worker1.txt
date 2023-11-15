@@ -1,0 +1,21 @@
+Name Roman Voronov
+Post Prezident Mira
+Year 100
+
+Name Kto-to Tam
+Post Zam Prezidenta
+Year 99
+
+Name Anton Konovalov
+Post Ministr
+Year 10
+
+Roman Voronov
+Prezident Mira
+100
+Kto-to Tam
+Zam Prezidenta
+99
+Anton Konovalov
+Ministr
+10

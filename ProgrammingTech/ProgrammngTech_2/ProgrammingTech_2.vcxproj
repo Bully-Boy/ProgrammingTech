@@ -18,9 +18,6 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -129,6 +126,22 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Keeper.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="Worker.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Keeper.h" />
+    <ClInclude Include="Text.h" />
+    <ClInclude Include="Worker.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="text.txt" />
+    <Text Include="worker.txt" />
+    <Text Include="worker1.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
